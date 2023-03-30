@@ -14,9 +14,9 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
 
   const { isSubmitting, submitNinhada } = useNinhada();
 
-  
 
- 
+
+
 
 
 
@@ -35,11 +35,11 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
     <div className="form-container">
       <form onSubmit={handleNinhadaSubmit}>
         <h2>Cadastro de Ninhada</h2>
-      
+
         <div>
           <DadosFemea
             idExpositor={idExpositor}
-            
+
             setDadosFemea={setDadosFemea}
           />
         </div>
@@ -62,9 +62,9 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
             setFilhotes={setFilhotes}
           />
           <div>
-          <button type="submit" disabled={isSubmitting}>
-            Enviar Ninhada
-          </button>
+            <button type="submit" disabled={isSubmitting}>
+              Enviar Ninhada
+            </button>
           </div>
         </div>
       </form>

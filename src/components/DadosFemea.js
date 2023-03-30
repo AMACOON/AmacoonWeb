@@ -54,7 +54,7 @@ const DadosFemea = ({ idExpositor, setDadosFemea }) => {
         <label htmlFor="manualData">Se a Gata Não Estiver na Lista - Homologar e Tranferir</label>
       </div>
       {showManualData ? (
-         <DadosGatoManual onChange={handleInputChange} />
+        <DadosGatoManual onChange={handleInputChange} />
       ) : (
         selectedFemea && Object.keys(selectedFemea).length > 0 && (
           <>

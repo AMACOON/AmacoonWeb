@@ -35,7 +35,7 @@ const DadosMachoNaoProprietario = ({ setDadosMacho }) => {
       <div>
         <label htmlFor="uso-sistema">Escolher Gatos Sistema</label>
         <select id="uso-sistema" onChange={handleUsoSistemaChange}>
-        <option value="selecione">Selecione</option>
+          <option value="selecione">Selecione</option>
           <option value="usar-sistema">Usar sistema</option>
           <option value="preencher-manualmente">Preencher manualmente</option>
         </select>
@@ -60,7 +60,7 @@ const DadosMachoNaoProprietario = ({ setDadosMacho }) => {
               {gato ? (
                 <>
                   <DadosGato gato={gato} title="Dados do Gato" />
-                 
+
                 </>
               ) : (
                 <>

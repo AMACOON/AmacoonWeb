@@ -3,8 +3,9 @@ import useCountries from "./hooks/useCountries";
 
 const DadosNascimento = ({ setDadosNascimento }) => {
   const [selectedCountry, setSelectedCountry] = useState("");
+  console.log(selectedCountry)
   const { countries } = useCountries();
-console.log("Pais",countries)
+  console.log("Pais", countries)
   const handleCountryChange = (event) => {
     setSelectedCountry(event.target.value);
   };
@@ -26,11 +27,11 @@ console.log("Pais",countries)
       <input
         type="text"
         id="nomeGatil"
-        name= "nomeGatil"
+        name="nomeGatil"
         onChange={setDadosNascimento}
       />
-      
-     
+
+
       <label htmlFor="raca">Raça</label>
       <input
         type="text"
@@ -38,7 +39,7 @@ console.log("Pais",countries)
         name="raca"
         onChange={setDadosNascimento}
       />
-     
+
       <label htmlFor="numFilhotes">Nº de Filhotes</label>
       <input
         type="number"
@@ -46,7 +47,7 @@ console.log("Pais",countries)
         name="numFilhotes"
         onChange={setDadosNascimento}
       />
-     
+
       <label htmlFor="dataNascimento">Data de Nascimento</label>
       <input
         type="date"

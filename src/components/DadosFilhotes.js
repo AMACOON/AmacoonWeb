@@ -1,7 +1,7 @@
 import React from "react";
 
-const DadosFilhotes = ({ setFilhotes,dadosFilhotes }) => {
- 
+const DadosFilhotes = ({ setFilhotes, dadosFilhotes }) => {
+
   const handleFilhoteChange = (event, index, field) => {
     const newFilhotes = [...dadosFilhotes];
     newFilhotes[index][field] = event.target.value;
@@ -26,7 +26,7 @@ const DadosFilhotes = ({ setFilhotes,dadosFilhotes }) => {
     const newFilhotes = dadosFilhotes.filter((filhote, i) => i !== index);
     setFilhotes(newFilhotes);
   };
-  
+
   return (
     <div>
       <h3>Dados do Filhotes</h3>
@@ -91,10 +91,10 @@ const DadosFilhotes = ({ setFilhotes,dadosFilhotes }) => {
         );
       })}
       <div>
-      <button type="button" onClick={handleAddFilhote}>
-            Adicionar Filhote
-          </button>
-          </div>
+        <button type="button" onClick={handleAddFilhote}>
+          Adicionar Filhote
+        </button>
+      </div>
     </div>
   );
 };
