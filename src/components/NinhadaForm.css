@@ -1,0 +1,269 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form-section {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-section h3 {
+  margin-top: 0;
+  color: #007bff;
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.form-section input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-section button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  align-self: center;
+}
+
+.form-section button:hover {
+  background-color: #0062cc;
+}
+
+.form-section .gato-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-section .gato-info select {
+  width: 100%;
+  max-width: 300px;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-section .gato-info label {
+  margin-right: 10px;
+  color: #333;
+  font-size: 16px;
+}
+
+.form-section .form-input-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-section .form-input-section > div {
+  margin-bottom: 20px;
+  flex-basis: 45%;
+}
+
+.form-section .form-input-section > div:last-child {
+  flex-basis: 100%;
+}
+
+.form-section .form-input-section > div > h4 {
+  color: #007bff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.form-section .form-input-section > div > label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-section .form-input-section > div > input,
+.form-section .form-input-section > div > select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.form-section .add-filhote-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.form-section .add-filhote-btn button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+}
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    }
+    
+    .form-section {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    }
+    
+    .form-section h3 {
+    margin-top: 0;
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+    
+    .form-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    }
+    
+    .form-section input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    }
+    
+    .form-section button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    }
+    
+    .form-section button:hover {
+    background-color: #0062cc;
+    }
+    
+    .form-section .gato-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    }
+    
+    .form-section .gato-info select {
+    width: 100%;
+    max-width: 300px;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    }
+    
+    .form-section .gato-info label {
+    margin-right: 10px;
+    color: #333;
+    font-size: 16px;
+    }
+    
+    .form-section .form-input-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    
+    .form-section .form-input-section > div {
+    margin-bottom: 20px;
+    flex-basis: 45%;
+    }
+    
+    .form-section .form-input-section > div:last-child {
+    flex-basis: 100%;
+    }
+    
+    .form-section .form-input-section > div > h4 {
+    color: #007bff;
+    font-size: 20px;
+    margin-bottom: 10px;
+    }
+    
+    .form-section .form-input-section > div > label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 16px;
+    }
+    
+    .form-section .form-input-section > div > input,
+    .form-section .form-input-section > div > select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    }
+    
+    .form-section .add-filhote-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    }
+    
+    .form-section .add-filhote-btn button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    }
+    
+    .form-section .add-filhote-btn button:hover {
+    background-color: #0062cc;
+    }
+    
+    
+    
+    
