@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 const DadosProprietario = ({ handleInputChange, owner }) => {
   return (
     <div>

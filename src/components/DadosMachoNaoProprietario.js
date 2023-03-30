@@ -3,7 +3,8 @@ import DadosGato from "./DadosGato";
 import DadosGatoManual from "./DadosGatoManual";
 import useGatoRegister from "./hooks/useGatoRegister";
 
-const DadosMachoNaoProprietario = ({ setDadosMacho }) => {
+
+const DadosMachoNaoProprietario = ({ setDadosMacho, dadosMacho }) => {
   const [usoSistema, setUsoSistema] = useState(true);
   const [registro, setRegistro] = useState("");
   const [showBuscaCampo, setShowBuscaCampo] = useState(false);
@@ -13,6 +14,7 @@ const DadosMachoNaoProprietario = ({ setDadosMacho }) => {
   const handleUsoSistemaChange = (event) => {
     setUsoSistema(event.target.value === "usar-sistema");
     setShowBuscaCampo(event.target.value === "usar-sistema");
+    //dadosMacho({}); // limpa os dados do gato ao mudar a opção
   };
 
   const handleRegistroChange = (event) => {
@@ -22,13 +24,20 @@ const DadosMachoNaoProprietario = ({ setDadosMacho }) => {
   const handleBuscarClick = () => {
     setSearchClicked(true);
     if (registro !== "") {
-      searchGatoByRegistro(registro);
+      searchGatoByRegistro(registro, gato => {
+        setDadosMacho(gato); // atribui os dados do gato encontrado em `dadosMacho`
+      });
     }
   };
+  
 
   const handleInputChange = (name, value) => {
     setDadosMacho((prev) => ({ ...prev, [name]: value }));
-  };
+  }; 
+
+
+console.log("Gato", gato)
+console.log("DadosMacho", dadosMacho)
 
   return (
     <>
@@ -59,7 +68,7 @@ const DadosMachoNaoProprietario = ({ setDadosMacho }) => {
             <>
               {gato ? (
                 <>
-                  <DadosGato gato={gato} title="Dados do Gato" />
+                  <DadosGato gato={gato} title="Dados do TESTE" />
 
                 </>
               ) : (
@@ -74,7 +83,9 @@ const DadosMachoNaoProprietario = ({ setDadosMacho }) => {
       {!usoSistema && (
         <>
           <DadosGatoManual onChange={handleInputChange} />
+          
         </>
+        
       )}
     </>
   );

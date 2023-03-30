@@ -1,102 +1,75 @@
-import React, { useState, useEffect } from "react";
-import useBreeds from "./hooks/useBreeds";
-import useColors from "./hooks/useColors";
-import DadosProprietario from "./DadosProprietario";
+import React from "react";
 
 const DadosGatoManual = ({ onChange }) => {
-  const { breeds } = useBreeds();
-  const [selectedBreed, setSelectedBreed] = useState("");
-  const { colors } = useColors(selectedBreed);
-
-  const handleBreedSelection = (event) => {
-    setSelectedBreed(event.target.value);
-  };
-
-  useEffect(() => {
-    setSelectedBreed("");
-  }, [breeds]);
-
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "ColorName") {
-      const selectedColor = colors.find((color) => color.ColorName === value);
-      setSelectedColor(selectedColor);
-      onChange("CodigoEMS", selectedColor?.EmsCode || "");
-    } else {
-      onChange(name, value);
-    }
+    const name = event.target.name;
+    const value = event.target.value;
+    onChange(name, value);
   };
-
-
-  const [selectedColor, setSelectedColor] = useState("");
 
   return (
     <div>
-      <h3>Dados do Gato</h3>
-      <div>
-        <label htmlFor="nome">Nome:</label>
-        <input type="text" id="nome" name="Name" onChange={handleInputChange} />
+       <div>
+      <label htmlFor="name">Nome:</label>
+      <input type="text" id="name" name="Name" onChange={handleInputChange} />
       </div>
       <div>
-        <label htmlFor="registro">Registro:</label>
-        <input type="text" id="registro" name="Registration" onChange={handleInputChange} />
+        <label htmlFor="registration">Registro:</label>
+        <input type="text" id="registration" name="Registration" onChange={handleInputChange} />
+     </div>
+      <div>
+      <label htmlFor="microchip">Microchip:</label>
+      <input type="text" id="microchip" name="Microchip" onChange={handleInputChange} />
       </div>
       <div>
-        <label htmlFor="microchip">Microchip:</label>
-        <input type="text" id="microchip" name="Microchip" onChange={handleInputChange} />
+      <label htmlFor="breedName">Raça:</label>
+      <input type="text" id="breedName" name="BreedName" onChange={handleInputChange} />
       </div>
       <div>
-        <label htmlFor="raca">Raça:</label>
-        {breeds && breeds.length > 0 ? (
-          <select id="raca" name="BreedName" onChange={handleBreedSelection} value={selectedBreed}>
-            <option value="">Selecione uma raça</option>
-            {breeds.map((breed) => (
-              <option key={breed.BreedID} value={breed.BreedID}>
-                {breed.BreedName}
-              </option>
-            ))}
-          </select>
-
-
-        ) : (
-          <p>Carregando raças...</p>
-        )}
+      <label htmlFor="colorName">Cor:</label>
+      <input type="text" id="colorName" name="ColorName" onChange={handleInputChange} />
       </div>
       <div>
-        <label htmlFor="cor">Cor:</label>
-        {colors && colors.length > 0 ? (
-          <select id="cor" name="ColorName" onChange={handleInputChange}>
-            <option value="">Selecione uma cor</option>
-            {colors.map((color) => (
-              <option key={color.ColorID} value={color.ColorName}>
-                {color.ColorName}
-              </option>
-            ))}
-          </select>
-        ) : null}
+      <label htmlFor="emsCode">EmsCode:</label>
+      <input type="text" id="emsCode" name="EmsCode" onChange={handleInputChange} />
+      </div>
+
+     {/*  <label htmlFor="birthdate">Data de Nascimento:</label>
+      <input type="text" id="birthdate" name="Birthdate" onChange={handleInputChange} />
+
+      <label htmlFor="fatherName">Nome do Pai:</label>
+      <input type="text" id="fatherName" name="FatherName" onChange={handleInputChange} />
+
+      <label htmlFor="motherName">Nome da Mãe:</label>
+      <input type="text" id="motherName" name="MotherName" onChange={handleInputChange} />
+
+      <label htmlFor="breederName">Nome do Criador:</label>
+      <input type="text" id="breederName" name="BreederName" onChange={handleInputChange} />
+
+ */}  
+      <div>
+      <label htmlFor="ownerName">Proprietário:</label>
+      <input type="text" id="ownerName" name="OwnerName" onChange={handleInputChange} />
       </div>
       <div>
-
-        <div>
-          <label htmlFor="codigoEMS">Código EMS:</label>
-          {selectedColor && selectedColor.EmsCode ? (
-            <input
-              type="text"
-              id="codigoEMS"
-              name="CodigoEMS"
-              value={selectedColor.EmsCode}
-              readOnly
-            />
-          ) : (
-            <p>Selecione uma cor para carregar o código EMS</p>
-          )}
-        </div>
-
-
-        <div>
-          <DadosProprietario handleInputChange={handleInputChange} />
-        </div>
-
+      <label htmlFor="address">Endereço:</label>
+      <input type="text" id="address" name="Address" onChange={handleInputChange} />
+      </div>
+      <div>
+      <label htmlFor="zipCode">Código Postal:</label>
+      <input type="text" id="zipCode" name="ZipCode" onChange={handleInputChange} />
+      </div>
+      <div>
+      <label htmlFor="city">Cidade:</label>
+      <input type="text" id="city" name="City" onChange={handleInputChange} />
+      </div>
+      <div>
+      <label htmlFor="state">Estado:</label>
+      <input type="text" id="state" name="State" onChange={handleInputChange} />
+      </div>
+      <div>
+      <label htmlFor="phone">Telefone:</label>
+      <input type="text" id="phone" name="Phone" onChange={handleInputChange} />
       </div>
     </div>
   );

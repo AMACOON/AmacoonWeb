@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DadosMachoProprietario from "./DadosMachoProprietario";
 import DadosMachoNaoProprietario from "./DadosMachoNaoProprietario";
 
-const DadosMacho = ({ idExpositor, setDadosMacho }) => {
+const DadosMacho = ({ idExpositor, setDadosMacho, dadosMacho }) => {
   const [tipoProprietario, setTipoProprietario] = useState(null);
 
   const handleProprietarioChange = (event) => {
@@ -35,7 +35,7 @@ const DadosMacho = ({ idExpositor, setDadosMacho }) => {
       {tipoProprietario === "proprietario" ? (
         <DadosMachoProprietario idExpositor={idExpositor} setDadosMacho={setDadosMacho} />
       ) : tipoProprietario === "nao-proprietario" ? (
-        <DadosMachoNaoProprietario setDadosMacho={setDadosMacho} />
+        <DadosMachoNaoProprietario setDadosMacho={setDadosMacho} dadosMacho={dadosMacho} />
       ) : null}
     </>
   );

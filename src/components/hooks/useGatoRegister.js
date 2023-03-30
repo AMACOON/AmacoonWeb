@@ -13,7 +13,7 @@ const useGatoRegister = () => {
     setIsError(false); // Adicione esta linha
 
     try {
-      const response = await api.get(`/cats/${registro}`);
+      const response = await api.get(`/catsservice/${registro}`);
 
       console.log(`Gato com registro ${registro} recebido:`, response.data);
       setGato(response.data);

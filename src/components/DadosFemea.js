@@ -3,7 +3,7 @@ import DadosGato from "./DadosGato";
 import DadosGatoManual from "./DadosGatoManual";
 import useGatos from "./hooks/useGatos";
 
-const DadosFemea = ({ idExpositor, setDadosFemea }) => {
+const DadosFemea = ({ idExpositor, setDadosFemea, dadosFemea }) => {
   const [selectedFemea, setSelectedFemea] = useState("");
   const { gatos: femeas } = useGatos(idExpositor, "F");
   const [showManualData, setShowManualData] = useState(false);
@@ -24,6 +24,8 @@ const DadosFemea = ({ idExpositor, setDadosFemea }) => {
     setShowManualData(false);
   };
 
+  console.log("SelectedFemea:", selectedFemea);
+
   const handleChangeCheckbox = (event) => {
     if (!selectedFemea) {
       setShowManualData(event.target.checked);
@@ -39,7 +41,7 @@ const DadosFemea = ({ idExpositor, setDadosFemea }) => {
       <h3>Dados da Fêmea</h3>
       {femeas && femeas.length > 0 ? (
         <select onChange={handleFemeaSelection} value={selectedFemea?.CatID || ""}>
-          <option value="">Selecione um gato</option>
+          <option value="">Selecione uma gata</option>
           {femeas.map((gato) => (
             <option key={gato.CatID} value={gato.CatID}>
               {gato.Name}
@@ -58,7 +60,7 @@ const DadosFemea = ({ idExpositor, setDadosFemea }) => {
       ) : (
         selectedFemea && Object.keys(selectedFemea).length > 0 && (
           <>
-            <DadosGato gato={selectedFemea} title="Dados do Gato" />
+            <DadosGato gato={selectedFemea} title="Dados do Gata" />
           </>
         )
       )}
@@ -66,4 +68,4 @@ const DadosFemea = ({ idExpositor, setDadosFemea }) => {
   );
 };
 
-export default DadosFemea;
+export default DadosFemea

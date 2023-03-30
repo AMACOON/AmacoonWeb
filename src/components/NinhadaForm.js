@@ -14,12 +14,6 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
 
   const { isSubmitting, submitNinhada } = useNinhada();
 
-
-
-
-
-
-
   const handleNinhadaSubmit = (e) => {
     e.preventDefault();
     const ninhadaData = {
@@ -31,23 +25,23 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
     submitNinhada(ninhadaData);
   };
 
+  const handleLogData = () => {
+    console.log("Dados da Fêmea:", dadosFemea);
+    console.log("Dados do Macho:", dadosMacho);
+    console.log("Dados de Nascimento:", dadosNascimento);
+    console.log("Dados dos Filhotes:", dadosFilhotes);
+  };
+
   return (
     <div className="form-container">
       <form onSubmit={handleNinhadaSubmit}>
         <h2>Cadastro de Ninhada</h2>
 
         <div>
-          <DadosFemea
-            idExpositor={idExpositor}
-
-            setDadosFemea={setDadosFemea}
-          />
+          <DadosFemea idExpositor={idExpositor} setDadosFemea={setDadosFemea} />
         </div>
         <div>
-          <DadosMacho
-            idExpositor={idExpositor}
-            setDadosMacho={setDadosMacho}
-          />
+          <DadosMacho idExpositor={idExpositor} setDadosMacho={setDadosMacho} dadosMacho={dadosMacho}/>
         </div>
 
         <div>
@@ -57,13 +51,13 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
           />
         </div>
         <div>
-          <DadosFilhotes
-            dadosFilhotes={dadosFilhotes}
-            setFilhotes={setFilhotes}
-          />
+          <DadosFilhotes dadosFilhotes={dadosFilhotes} setFilhotes={setFilhotes} />
           <div>
             <button type="submit" disabled={isSubmitting}>
               Enviar Ninhada
+            </button>
+            <button type="button" onClick={handleLogData}>
+              Log dos Dados
             </button>
           </div>
         </div>
@@ -72,4 +66,4 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
   );
 };
 
-export default NinhadaForm
+export default NinhadaForm;

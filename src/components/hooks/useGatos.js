@@ -11,7 +11,7 @@ const useGatos = (idExpositor, sexo) => {
         sex: sexo,
       };
 
-      const response = await api.get("/cats", {
+      const response = await api.get("/catsservice", {
         params: queryParams,
       });
 
