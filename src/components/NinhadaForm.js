@@ -53,7 +53,7 @@ const NinhadaForm = ({ idExpositor = 44 }) => {
         <div>
           <DadosFilhotes dadosFilhotes={dadosFilhotes} setFilhotes={setFilhotes} />
           <div>
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" onClick={handleNinhadaSubmit}>
               Enviar Ninhada
             </button>
             <button type="button" onClick={handleLogData}>

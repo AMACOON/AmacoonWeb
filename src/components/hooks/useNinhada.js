@@ -7,6 +7,10 @@ const useNinhada = () => {
   const submitNinhada = async (ninhadaData) => {
     setIsSubmitting(true);
     try {
+      console.log(ninhadaData.dadosFemea)
+      console.log(ninhadaData.dadosMacho)
+      console.log(ninhadaData.dadosNascimento)
+      console.log(ninhadaData.dadosFilhotes)
       // Realize a chamada para a API aqui com os dados da ninhada.
       // Por exemplo:
       // const response = await api.post('/ninhada', ninhadaData);
@@ -24,3 +28,9 @@ const useNinhada = () => {
 };
 
 export default useNinhada;
+/* const response = await api.post('/ninhada', {
+        motherData: ninhadaData.dadosFemea,
+        fatherData: ninhadaData.dadosMacho,
+        birthData: ninhadaData.dadosNascimento,
+        kittenData: ninhadaData.dadosFilhotes,
+      }); */

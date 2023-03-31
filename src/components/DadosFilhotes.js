@@ -15,7 +15,7 @@ const DadosFilhotes = ({ setFilhotes, dadosFilhotes }) => {
         nome: "",
         microchip: "",
         EMS: "",
-        olhos: "",
+        cor: "",
         sexo: "",
         status: "",
       },
