@@ -21,7 +21,9 @@ export default function Owner({
             label: cat.Name,
           }))}
           selectedOption={selectedCat}
-          handleSelectedOption={() => handleSelectedCat(Number(selectedCat))}
+          //handleSelectedOption={() => handleSelectedCat(Number(selectedCat))}
+          handleSelectedOption={(option) => handleSelectedCat(Number(option))} // ajuste para renderizar gato escolhido
+
         />
       ) : (
         <p>Nenhum macho cadastrado</p>

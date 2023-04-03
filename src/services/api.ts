@@ -23,7 +23,7 @@ export const getCatByRegister = async (register: string) => {
   try {
     const response = await api.get(`/catsservice/${register}`);
 
-    return response.data[0];
+    return response.data; // Receber 1 e nao array
   } catch (error) {
     console.error(error);
   }

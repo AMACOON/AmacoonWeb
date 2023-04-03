@@ -35,7 +35,10 @@ export default function Female({ setDataFemale }: FemaleProps) {
             label: cat.Name,
           }))}
           selectedOption={selectedCat}
-          handleSelectedOption={() => handleSelectedCat(Number(selectedCat))}
+          
+          //handleSelectedOption={() => handleSelectedCat(Number(selectedCat))}
+          handleSelectedOption={(option) => handleSelectedCat(Number(option))} // ajuste para renderizar gato escolhido
+
         />
       ) : (
         <p>Nenhuma fêmea cadastrada</p>
@@ -51,7 +54,7 @@ export default function Female({ setDataFemale }: FemaleProps) {
       </div>
 
       {selectedCat && Object.keys(selectedCat).length > 0 && (
-        <CatData cat={selectedCat} subtitle="Dados da Fêmea" />
+        <CatData cat={selectedCat} subtitle="Dados da Fêmea" />  // Renderiza Gata Escolhida
       )}
 
       {showManualData && <ManualCatForm onChange={handleInputChange} />}

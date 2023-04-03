@@ -21,8 +21,6 @@ export default function NotOwner({
     setSelectedOption(option);
   }
 
-  console.log(selectedCat);
-
   return (
     <>
       <Select
@@ -51,7 +49,7 @@ export default function NotOwner({
       )}
 
       {selectedOption === "system" && selectedCat && (
-        <CatData cat={selectedCat} subtitle="Gato buscado" />
+        <CatData cat={selectedCat} subtitle="Dados do Macho" />
       )}
 
       {selectedOption === "manual" && (

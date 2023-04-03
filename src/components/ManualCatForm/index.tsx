@@ -14,7 +14,11 @@ export default function ManualCatForm({ onChange }: ManualCatFormProps) {
     <div>
       <div>
         <label htmlFor="name">Nome:</label>
-        <input type="text" id="name" name="Name" onChange={handleInputChange} />
+        <input 
+          type="text"
+          id="name"
+          name="Name" 
+          onChange={handleInputChange} />
       </div>
       <div>
         <label htmlFor="registration">Registro:</label>

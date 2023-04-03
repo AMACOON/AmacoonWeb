@@ -16,6 +16,7 @@ export default function useCat({ setDataCat, genre }: useCatDataProps) {
   useEffect(() => {
     async function loadCatsData() {
       const catsData = await getCats(44, genre);
+      console.log("Retono Api All", catsData)
       setCats(catsData);
     }
 
@@ -24,7 +25,7 @@ export default function useCat({ setDataCat, genre }: useCatDataProps) {
 
   function handleSelectedCat(catId: number) {
     const selectedGato = cats.find((cat) => cat.CatID === Number(catId));
-
+    console.log("Gato Selecionado: ",selectedGato);
     if (!selectedGato) {
       console.error(`Não foi possível encontrar um gato com o CatID ${catId}`);
       return;
@@ -33,10 +34,12 @@ export default function useCat({ setDataCat, genre }: useCatDataProps) {
     setDataCat(selectedGato);
     setShowManualData(false);
   }
+  
 
   async function handleSearchCat(register: string) {
     if (register.length === 6) {
       const selectedGato = await getCatByRegister(register);
+      console.log("Retono Api Registro", selectedGato)
 
       if (!selectedGato) {
         console.error(
@@ -47,6 +50,7 @@ export default function useCat({ setDataCat, genre }: useCatDataProps) {
       }
 
       setSelectedCat(selectedGato);
+      setDataCat(selectedGato);
     } else {
       setSelectedCat(null);
     }
