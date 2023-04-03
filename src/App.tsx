@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Female from "./components/Famale";
+import Female from "./components/Female";
 import Male from "./components/Male";
 
 function App() {
