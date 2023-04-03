@@ -1,0 +1,30 @@
+import axios from "axios";
+
+export const api = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
+export const getCats = async (id_exhibitor: number, sex: "M" | "F") => {
+  try {
+    const response = await api.get("/catsservice", {
+      params: {
+        id_exhibitor,
+        sex,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getCatByRegister = async (register: string) => {
+  try {
+    const response = await api.get(`/catsservice/${register}`);
+
+    return response.data[0];
+  } catch (error) {
+    console.error(error);
+  }
+};
