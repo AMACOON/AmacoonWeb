@@ -28,3 +28,14 @@ export const getCatByRegister = async (register: string) => {
     console.error(error);
   }
 };
+
+export const getCountries = async () => {
+  try {
+    const response = await api.get("/countries", {
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
