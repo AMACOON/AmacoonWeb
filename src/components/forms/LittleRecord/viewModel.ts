@@ -23,8 +23,8 @@ export default function useLittleRecordForm() {
   useEffect(() => {
     async function loadCats() {
       const [males, females] = await Promise.all([
-        getCats(44, "M"),
-        getCats(44, "F"),
+        getCats(2, "male"),
+        getCats(2, "female"),
       ]);
 
       setMales(males);
@@ -34,23 +34,24 @@ export default function useLittleRecordForm() {
     loadCats();
   }, []);
 
-  function handleChangeCat(name: string, sex: "M" | "F") {
+  function handleChangeCat(name: string, gender: "male" | "female") {
     const cat =
-      sex === "M"
-        ? males.find((male) => male.Name === name)
-        : females.find((female) => female.Name === name);
-
+      gender === "male"
+        ? males.find((male) => male.catData.name === name)
+        : females.find((female) => female.catData.name === name);
+  
     if (!cat) {
       setError({
-        field: sex === "M" ? "male" : "female",
+        field: gender === "male" ? "male" : "female",
         message: "Fêmea é obrigatória",
       });
-      sex === "M" ? setMale(undefined) : setFemale(undefined);
+      gender === "male" ? setMale(undefined) : setFemale(undefined);
     } else {
-      removeError(sex === "M" ? "male" : "female");
-      sex === "M" ? setMale(cat) : setFemale(cat);
+      removeError(gender === "male" ? "male" : "female");
+      gender === "male" ? setMale(cat) : setFemale(cat);
     }
   }
+  
 
   function handleChangeTypeOwnerMale(type: string) {
     setMale(undefined);
@@ -58,25 +59,26 @@ export default function useLittleRecordForm() {
     setTypeOwnerMale(type);
   }
 
-  async function handleCatByRegister(register: string, sex: "M" | "F") {
+  async function handleCatByRegister(register: string, gender: "male" | "female") {
     setMaleCatRegistration(register);
-
+  
     if (register.length === 6) {
       const cat = await getCatByRegister(register);
-
+  
       if (cat.CatID === 0) {
         setError({
-          field: sex === "M" ? "male" : "female",
+          field: gender === "male" ? "male" : "female",
           message: "Gato não encontrado",
         });
-        sex === "M" ? setMale(undefined) : setFemale(undefined);
+        gender === "male" ? setMale(undefined) : setFemale(undefined);
       } else {
-        removeError(sex === "M" ? "male" : "female");
-
-        sex === "M" ? setMale(cat) : setFemale(cat);
+        removeError(gender === "male" ? "male" : "female");
+  
+        gender === "male" ? setMale(cat) : setFemale(cat);
       }
     }
   }
+  
 
   function handleChangeManualCat(key: string, value: string) {
     setManualMale((prev: any) => ({ ...prev, [key]: value }));

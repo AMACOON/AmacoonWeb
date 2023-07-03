@@ -7,7 +7,7 @@ import InputAutocomplete from "../../../../InputAutocomplete";
 type FemaleProps = {
   female?: Cat;
   females: Cat[];
-  handleChangeCat: (name: string, sex: "M" | "F") => void;
+  handleChangeCat: (name: string, gender: "male" | "female") => void;
   getErrorMessageByFieldName: (fieldName: string) => string;
 };
 
@@ -22,8 +22,8 @@ export default function Female({
       <FormGroup error={getErrorMessageByFieldName("female")}>
         <InputAutocomplete
           placeholder="Pesquise por uma fêmea"
-          suggestions={females.map((female) => female.Name)}
-          onChange={(name) => handleChangeCat(name, "F")}
+          suggestions={females.map((female) => female.catData.name)}
+          onChange={(name) => handleChangeCat(name, "female")}
           error={getErrorMessageByFieldName("female")}
         />
       </FormGroup>

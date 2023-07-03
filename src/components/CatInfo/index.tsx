@@ -8,16 +8,16 @@ export default function CatInfo({ cat }: CatInfoProps) {
   return (
     <Container>
       {[
-        "Name",
-        "Registration",
-        "Microchip",
-        "BreedName",
-        "ColorName",
-        "OwnerName",
+        "name",
+        "registration",
+        "microchip",
+        "breedName",
+        "colorName",
+        "emsCode",
       ].map((key) => {
         return (
           <p key={key}>
-            <strong>{key}:</strong> {cat[key]}
+            <strong>{key}:</strong> {cat.catData[key]}
           </p>
         );
       })}

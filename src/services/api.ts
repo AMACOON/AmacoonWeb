@@ -1,15 +1,15 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://amacoon.vps-kinghost.net:8080",
+  baseURL: "https://amacoon.fq8n18ftegddi.us-east-1.cs.amazonlightsail.com",
 });
 
-export const getCats = async (id_exhibitor: number, sex: "M" | "F") => {
+export const getCats = async (ownerId: number, gender: "male" | "female") => {
   try {
-    const response = await api.get("/catsservice", {
+    const response = await api.get("/catservice", {
       params: {
-        id_exhibitor,
-        sex,
+        ownerId,
+        gender,
       },
     });
 
@@ -19,9 +19,9 @@ export const getCats = async (id_exhibitor: number, sex: "M" | "F") => {
   }
 };
 
-export const getCatByRegister = async (register: string) => {
+export const getCatByRegister = async (registration: string) => {
   try {
-    const response = await api.get(`/catsservice/${register}`);
+    const response = await api.get(`/catservice/${registration}/registration`);
 
     return response.data; // Receber 1 e nao array
   } catch (error) {
@@ -37,5 +37,19 @@ export const getCountries = async () => {
     return response.data;
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const login = async (email: string, password: string) => {
+  try {
+    const response = await api.post("/login/authenticate", {
+      email,
+      password,
+    });
+
+    return response.data; // Retorna os dados da resposta
+  } catch (error) {
+    console.error(error);
+    throw error; // Lança o erro para ser capturado na função de chamada
   }
 };

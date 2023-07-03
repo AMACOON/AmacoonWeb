@@ -15,8 +15,8 @@ type MaleProps = {
   typeOwnerMale: string;
   handleChangeTypeOwnerMale: (type: string) => void;
   maleCatRegistration: string;
-  handleCatByRegister: (register: string, sex: "M" | "F") => void;
-  handleChangeCat: (name: string, sex: "M" | "F") => void;
+  handleCatByRegister: (register: string, gender: "male" | "female") => void;
+  handleChangeCat: (name: string, gender: "male" | "female") => void;
   handleChangeManualCat: (key: string, value: string) => void;
   getErrorMessageByFieldName: (fieldName: string) => string;
 };
@@ -61,8 +61,8 @@ export default function Male({
         <FormGroup error={getErrorMessageByFieldName("male")}>
           <InputAutocomplete
             placeholder="Pesquise por um macho"
-            suggestions={males.map((male) => male.Name)}
-            onChange={(name) => handleChangeCat(name, "M")}
+            suggestions={males.map((male) => male.catData.name)}
+            onChange={(name) => handleChangeCat(name, "male")}
             error={getErrorMessageByFieldName("male")}
           />
         </FormGroup>
@@ -73,7 +73,7 @@ export default function Male({
           <Input
             placeholder="Número de registro do macho"
             type="text"
-            onChange={(e) => handleCatByRegister(e.target.value, "M")}
+            onChange={(e) => handleCatByRegister(e.target.value, "male")}
             value={maleCatRegistration}
             error={!!getErrorMessageByFieldName("male")}
           />
