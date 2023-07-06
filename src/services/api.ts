@@ -4,8 +4,8 @@ import {CatShort} from '../@types/cat';
 
 export const api = axios.create({
    //baseURL: "https://amacoon.fq8n18ftegddi.us-east-1.cs.amazonlightsail.com:8080",
-  baseURL: "http://amacoon.service.local:8080",
-  //baseURL: "http://localhost:8080",
+  //baseURL: "http://amacoon.service.local:8080",
+  baseURL: "http://localhost:8080",
 });
 
 export const getCats = async (ownerId: number, gender: "male" | "female") => {
