@@ -1,15 +1,16 @@
 import useLittleRecordForm from "./viewModel";
-
 import FormSection from "../../FormSection";
-
 import Female from "./steps/Female";
 import Male from "./steps/Male";
 import Litter from "./steps/Litter";
 import Little from "./steps/Little";
-
 import { Container } from "./styles";
 
-export default function LittleRecordForm() {
+interface LittleRecordFormProps {
+  userId: number;
+}
+
+export default function LittleRecordForm({ userId }: LittleRecordFormProps) {
   const {
     male,
     female,
@@ -24,9 +25,11 @@ export default function LittleRecordForm() {
     handleChangeManualCat,
     errors,
     getErrorMessageByFieldName,
-  } = useLittleRecordForm();
+  } = useLittleRecordForm(userId);
 
   console.log(errors);
+  console.log('female:', female);
+  console.log('male:', male)
 
   return (
     <Container>
@@ -64,3 +67,4 @@ export default function LittleRecordForm() {
     </Container>
   );
 }
+

@@ -1,9 +1,11 @@
 import Card from "../../components/Card";
 import Title from "../../components/Title";
+import { useParams } from 'react-router-dom';
 
 import { Container, Cards } from "./styles";
 
 export default function Services() {
+  const { userId } = useParams<{ userId: string }>();
   const services = [
     {
       title: "Gatil",
@@ -15,7 +17,7 @@ export default function Services() {
     {
       title: "Ninhada",
       services: [
-        { label: "Registro", url: "/registro-ninhada" },
+        { label: "Registro", url: `/registro-ninhada/${userId}` },
         { label: "Listagem", url: "/listagem-ninhada" },
       ],
     },

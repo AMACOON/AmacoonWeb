@@ -1,3 +1,8 @@
+export interface Cat {
+  catData: CatData;
+  ownerData: OwnerData;
+}
+
 export interface CatData {
   id: number;
   name: string;
@@ -25,14 +30,11 @@ export interface OwnerData {
   state: string;
   phone: string;
   countryName: string;
+  catteryId: number;
+  catteryName: string;
 }
 
-// Then we can create an interface to bring them together
 
-export interface Cat {
-  catData: CatData;
-  ownerData: OwnerData;
-}
 
 
 export interface ManualCat {
@@ -47,4 +49,13 @@ export interface ManualCat {
   ownerPhone: string;
   ownerGatil: string;
   ownerCpf: string;
+}
+
+export interface CatShort {
+  ID: number;
+  Name: string;
+  Breed: string;
+  Color: string;
+  EmsCode: string;
+  
 }

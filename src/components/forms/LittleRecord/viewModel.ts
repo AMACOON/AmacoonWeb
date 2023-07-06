@@ -6,7 +6,7 @@ import useErrors from "../../../hooks/useErrors";
 
 import { Cat, ManualCat } from "../../../@types/cat";
 
-export default function useLittleRecordForm() {
+export default function useLittleRecordForm(userId: number) {
   const { errors, getErrorMessageByFieldName, removeError, setError } =
     useErrors();
 
@@ -23,8 +23,8 @@ export default function useLittleRecordForm() {
   useEffect(() => {
     async function loadCats() {
       const [males, females] = await Promise.all([
-        getCats(2, "male"),
-        getCats(2, "female"),
+        getCats(userId, "male"),
+        getCats(userId, "female"),
       ]);
 
       setMales(males);

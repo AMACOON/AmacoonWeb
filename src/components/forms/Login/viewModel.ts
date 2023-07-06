@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { login } from "../../../services/api"; 
+import { LoginResponse } from '../../../@types/login';
+
 
 export default function useLoginForm() {
   const navigate = useNavigate();
@@ -11,17 +13,18 @@ export default function useLoginForm() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Implemente a lógica de autenticação aqui
+  
     try {
-      await login(email, password); 
-      // Se a autenticação for bem-sucedida, redirecione para Home
-      navigate('/home');
+      const loginData: LoginResponse = await login(email, password);
+      // If authentication is successful, redirect to Home
+      navigate('/home', { state: { loginData } });
+
     } catch (err) {
-      // Trate o erro como achar melhor
+      // Handle error as you see fit
       setError('Login failed. Please try again.')
     }
   }
+  
 
   return {
     email,

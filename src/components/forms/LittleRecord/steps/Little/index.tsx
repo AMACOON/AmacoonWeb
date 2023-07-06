@@ -11,7 +11,7 @@ export default function Little({ female }: LittleProps) {
   return (
     <>
       <FormGroup>
-        <Input type="text" value={female?.ownerData.name} disabled />
+        <Input type="text" value={female?.ownerData.catteryName} disabled />
       </FormGroup>
 
       <FormGroup>

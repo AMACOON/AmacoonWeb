@@ -1,7 +1,10 @@
 import axios from "axios";
+import { LoginResponse } from '../@types/login';
+import {CatShort} from '../@types/cat';
 
 export const api = axios.create({
-  baseURL: "https://amacoon.fq8n18ftegddi.us-east-1.cs.amazonlightsail.com",
+   baseURL: "https://amacoon.fq8n18ftegddi.us-east-1.cs.amazonlightsail.com",
+  //baseURL: "http://localhost:8080",
 });
 
 export const getCats = async (ownerId: number, gender: "male" | "female") => {
@@ -40,16 +43,67 @@ export const getCountries = async () => {
   }
 };
 
-export const login = async (email: string, password: string) => {
+export async function login(email: string, password: string): Promise<LoginResponse> {
   try {
     const response = await api.post("/login/authenticate", {
       email,
       password,
     });
 
-    return response.data; // Retorna os dados da resposta
+    if (response.status !== 200) {
+      throw new Error('Login failed');
+    }
+
+    const data: LoginResponse = response.data;
+
+    // Here you can use the user data and token as needed,
+    // for example, saving it to local storage or state for later use
+    // localStorage.setItem('user', JSON.stringify(data.Owner));
+    // localStorage.setItem('token', data.Token);
+
+    return data; // Returns the response data as 'LoginResponse'
   } catch (error) {
     console.error(error);
-    throw error; // Lança o erro para ser capturado na função de chamada
+    throw error; // Throws the error to be caught in the calling function
+  }
+}
+
+
+export const getOwner = async (ownerId: number) => {
+  try {
+    const response = await api.get(`/owners/${ownerId}`);
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
   }
 };
+
+export const getCatShort = async (ownerId: number) => {
+  try {
+    const response = await api.get(`/cats/${ownerId}/owner`);
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// api.ts
+
+export async function deleteCat(id: number) {
+  // Simula um delay da rede
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Retorna uma Promise que resolve para um status 200
+  return Promise.resolve({ status: 200 });
+}
+
+export async function updateCat(cat: CatShort) {
+  // Simula um delay da rede
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  // Retorna uma Promise que resolve para um status 200
+  return Promise.resolve({ status: 200 });
+}
+
