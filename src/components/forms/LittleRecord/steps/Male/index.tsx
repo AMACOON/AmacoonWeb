@@ -73,7 +73,7 @@ export default function Male({
           <Input
             placeholder="Número de registro do macho"
             type="text"
-            onChange={(e) => handleCatByRegister(e.target.value, "male")}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleCatByRegister(e.target.value, "male")}
             value={maleCatRegistration}
             error={!!getErrorMessageByFieldName("male")}
           />
@@ -88,7 +88,7 @@ export default function Male({
               <Input
                 placeholder="Nome"
                 type="text"
-                onChange={(e) => handleChangeManualCat("name", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeManualCat("name", e.target.value)}
                 value={manualMale?.name}
                 error={!!getErrorMessageByFieldName("manualMale.name")}
               />
@@ -98,7 +98,7 @@ export default function Male({
               <Input
                 placeholder="Chip"
                 type="text"
-                onChange={(e) => handleChangeManualCat("chip", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeManualCat("chip", e.target.value)}
                 value={manualMale?.chip}
                 error={!!getErrorMessageByFieldName("manualMale.chip")}
               />
@@ -107,7 +107,7 @@ export default function Male({
             <FormGroup>
               <Select
                 placeholder="Raça"
-                onChange={(e) => handleChangeManualCat("breed", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeManualCat("breed", e.target.value)}
                 value={manualMale?.breed}
               >
                 <option value="0">Selecione uma raça</option>
@@ -117,10 +117,11 @@ export default function Male({
               </Select>
             </FormGroup>
 
+
             <FormGroup>
               <Select
                 placeholder="Cor"
-                onChange={(e) => handleChangeManualCat("color", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeManualCat("color", e.target.value)}
                 value={manualMale?.color}
               >
                 <option value="0">Selecione uma cor</option>
@@ -133,7 +134,7 @@ export default function Male({
             <FormGroup>
               <Select
                 placeholder="Ems"
-                onChange={(e) => handleChangeManualCat("ems", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeManualCat("ems", e.target.value)}
                 value={manualMale?.ems}
               >
                 <option value="0">Selecione uma ems</option>
@@ -147,7 +148,7 @@ export default function Male({
               <Input
                 placeholder="Registro FFB"
                 type="text"
-                onChange={(e) => handleChangeManualCat("ffb", e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeManualCat("ffb", e.target.value)}
                 value={manualMale?.ffb}
                 error={!!getErrorMessageByFieldName("manualMale.ffb")}
               />
@@ -163,7 +164,7 @@ export default function Male({
               <Input
                 placeholder="Nome"
                 type="text"
-                onChange={(e) =>
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleChangeManualCat("ownerName", e.target.value)
                 }
                 value={manualMale?.ownerName}
@@ -177,7 +178,7 @@ export default function Male({
               <Input
                 placeholder="Email"
                 type="email"
-                onChange={(e) =>
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleChangeManualCat("ownerEmail", e.target.value)
                 }
                 value={manualMale?.ownerEmail}
@@ -191,7 +192,7 @@ export default function Male({
               <Input
                 placeholder="Gatil"
                 type="text"
-                onChange={(e) =>
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleChangeManualCat("ownerGatil", e.target.value)
                 }
                 value={manualMale?.ownerGatil}
@@ -205,7 +206,7 @@ export default function Male({
               <Input
                 placeholder="CPF"
                 type="text"
-                onChange={(e) =>
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleChangeManualCat("ownerCpf", e.target.value)
                 }
                 value={manualMale?.ownerCpf}
@@ -219,7 +220,7 @@ export default function Male({
               <Input
                 placeholder="Telefone"
                 type="text"
-                onChange={(e) =>
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleChangeManualCat("ownerPhone", e.target.value)
                 }
                 value={manualMale?.ownerPhone}
