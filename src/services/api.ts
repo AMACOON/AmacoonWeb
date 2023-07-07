@@ -3,9 +3,7 @@ import { LoginResponse } from '../@types/login';
 import {CatShort} from '../@types/cat';
 
 export const api = axios.create({
-   //baseURL: "https://amacoon.fq8n18ftegddi.us-east-1.cs.amazonlightsail.com:8080",
-  baseURL: "http://amacoon.service.local:8080",
-  //baseURL: "http://amacoonservice.amacoon.service.local:8080",
+   baseURL: "https://amacoon.fq8n18ftegddi.us-east-1.cs.amazonlightsail.com/api"
   //baseURL: "http://localhost:8080",
 });
 
