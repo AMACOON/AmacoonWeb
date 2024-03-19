@@ -3,8 +3,10 @@ import { LoginResponse } from '../@types/login';
 import {CatShort} from '../@types/cat';
 
 export const api = axios.create({
-   baseURL: "https://amacoon.fq8n18ftegddi.us-east-1.cs.amazonlightsail.com/api"
-  //baseURL: "http://localhost:8080",
+   //baseURL: "http://ac3e0a49ff40d491dbeadda453bffd5e-459720180.sa-east-1.elb.amazonaws.com/api"
+  //baseURL: "http://localhost:8080/api",
+  baseURL: "http://amacconservice/api"
+
 });
 
 export const getCats = async (ownerId: number, gender: "male" | "female") => {

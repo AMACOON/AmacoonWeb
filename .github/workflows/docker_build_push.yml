@@ -1,4 +1,4 @@
-name: Docker Build and Push
+name: Docker Build and Push and Deploy to EKS
 
 on:
   push:
@@ -18,28 +18,52 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: sa-east-1
             
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       
       - name: Set environment variables
-        id: vars
         run: |
-          echo "::set-output name=ecr_registry::${{ steps.login-ecr.outputs.registry }}"
-          echo "::set-output name=image_repo::amacoon"
-          echo "::set-output name=image_tag::web"
+          echo "ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}" >> $GITHUB_ENV
+          echo "IMAGE_REPO=catclubsystem" >> $GITHUB_ENV
+          APP_NAME=amacconweb
+          COMMIT_HASH=$(echo ${{ github.sha }} | cut -c1-7) # Primeiros 7 caracteres da hash do commit
+          IMAGE_TAG=${APP_NAME}-${COMMIT_HASH}
+          echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
       
       - name: Build and tag Docker image
-        run: docker build -t ${{ steps.vars.outputs.ecr_registry }}/${{ steps.vars.outputs.image_repo }}:${{ steps.vars.outputs.image_tag }} .
+        run: docker build -t ${{ env.ECR_REGISTRY }}/${{ env.IMAGE_REPO }}:${{ env.IMAGE_TAG }} .
               
       - name: Push Docker image to ECR
-        run: docker push ${{ steps.vars.outputs.ecr_registry }}/${{ steps.vars.outputs.image_repo }}:${{ steps.vars.outputs.image_tag }}
+        run: docker push ${{ env.ECR_REGISTRY }}/${{ env.IMAGE_REPO }}:${{ env.IMAGE_TAG }}
+
+      - name: Replace IMAGE_URL_PLACEHOLDER in deployment.yaml
+        run: |
+          python -c "import sys; import os; data = open('k8s/deployment.yaml').read(); data = data.replace('IMAGE_URL_PLACEHOLDER', os.environ['ECR_REGISTRY'] + '/' + os.environ['IMAGE_REPO'] + ':' + os.environ['IMAGE_TAG']); open('k8s/deployment.yaml', 'w').write(data)"
+        env:
+          ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
+          IMAGE_REPO: ${{ env.IMAGE_REPO }}
+          IMAGE_TAG: ${{ env.IMAGE_TAG }}
       
-      # - name: Trigger Deploy to AWS Lightsail
-      #   uses: peter-evans/repository-dispatch@v1
-      #   with:
-      #     token: ${{ secrets.REPO_ACCESS_TOKEN }}
-      #     repository: scuba13/AmacoonDocker
-      #     event-type: new_docker_image
+      
+      # Debug: Print IMAGE_TAG
+      - name: Debug IMAGE_TAG
+        run: echo "IMAGE_TAG=${IMAGE_TAG}"
+      
+      # Debug: Print deployment.yaml content
+      - name: Debug deployment.yaml content
+        run: cat k8s/deployment.yaml
+      
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x ./kubectl
+          sudo mv ./kubectl /usr/local/bin/kubectl
+
+      - name: Update kubeconfig
+        run: aws eks --region sa-east-1 update-kubeconfig --name EKS_Edu
+      
+      - name: Apply Kubernetes manifests
+        run: kubectl apply -f k8s/
