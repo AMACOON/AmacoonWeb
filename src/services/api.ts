@@ -3,9 +3,10 @@ import { LoginResponse } from '../@types/login';
 import {CatShort} from '../@types/cat';
 
 export const api = axios.create({
-   baseURL: "http://ac3e0a49ff40d491dbeadda453bffd5e-459720180.sa-east-1.elb.amazonaws.com/api"
+   //baseURL: "http://ac3e0a49ff40d491dbeadda453bffd5e-459720180.sa-east-1.elb.amazonaws.com/api"
   //baseURL: "http://localhost:8080/api",
   //baseURL: "http://amacconservice:80/api"
+  baseURL: "amacoonservices.railway.internal"
 
 });
 
