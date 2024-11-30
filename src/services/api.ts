@@ -2,12 +2,16 @@ import axios from "axios";
 import { LoginResponse } from '../@types/login';
 import {CatShort} from '../@types/cat';
 
-export const api = axios.create({
-   //baseURL: "http://ac3e0a49ff40d491dbeadda453bffd5e-459720180.sa-east-1.elb.amazonaws.com/api"
-  //baseURL: "http://localhost:8080/api",
-  //baseURL: "http://amacconservice:80/api"
-  baseURL: "https://amacoonservices-production.up.railway.app/api"
+// Obtém a baseURL a partir da variável de ambiente
+const baseURL = import.meta.env.API_BASE_URL;
 
+// Verifica se a variável de ambiente está definida
+if (!baseURL) {
+  throw new Error("A variável de ambiente API_BASE_URL não está definida.");
+}
+
+export const api = axios.create({
+  baseURL: baseURL,
 });
 
 export const getCats = async (ownerId: number, gender: "male" | "female") => {
