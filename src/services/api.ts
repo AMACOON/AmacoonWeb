@@ -4,8 +4,7 @@ import {CatShort} from '../@types/cat';
 
 // Obtém a baseURL a partir da variável de ambiente
 //const baseURL = import.meta.env.API_BASE_URL;
-const baseURL = "https://amacoonservices-production.up.railway.app/api";
-
+const baseURL = "https://amacoonservices-production-d438.up.railway.app/api";
 // Verifica se a variável de ambiente está definida
 if (!baseURL) {
   throw new Error("A variável de ambiente API_BASE_URL não está definida.");
