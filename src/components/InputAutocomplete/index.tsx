@@ -18,7 +18,6 @@ export default function InputAutocomplete({
   const [value, setValue] = useState("");
   const [options, setOptions] = useState<string[]>([]);
   const [focused, setFocused] = useState(false);
-  // Atualizado para usar tipo number para o identificador do timeout
   const [blurTimeoutId, setBlurTimeoutId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -36,9 +35,11 @@ export default function InputAutocomplete({
     const { value } = event.target;
     setValue(value);
     onChange(value);
-    setOptions(suggestions.filter((suggestion) =>
-      suggestion.toLowerCase().includes(value.toLowerCase())
-    ));
+    setOptions(
+      suggestions.filter((suggestion) =>
+        suggestion.toLowerCase().includes(value.toLowerCase())
+      )
+    );
   }
 
   function handleOptionClick(suggestion: string) {
@@ -67,21 +68,21 @@ export default function InputAutocomplete({
 
   return (
     <>
-<Input
-  type="text"
-  placeholder={placeholder}
-  value={value || ""} // Garante que o valor nunca seja undefined
-  onChange={handleChangeOption}
-  error={!!error}
-  onFocus={() => setFocused(true)}
-  onBlur={() => {
-    // Iniciar um timeout ao perder o foco
-    const id = setTimeout(() => {
-      setFocused(false);
-    }, 200); // 200ms para permitir clique na opção
-    setBlurTimeoutId(id);
-  }}
-/>
+      <Input
+        type="text"
+        placeholder={placeholder}
+        value={value || ""} // Garante que o valor nunca seja undefined
+        onChange={handleChangeOption}
+        error={!!error}
+        onFocus={() => setFocused(true)}
+        onBlur={() => {
+          // Iniciar um timeout ao perder o foco
+          const id: number = window.setTimeout(() => {
+            setFocused(false);
+          }, 200); // 200ms para permitir clique na opção
+          setBlurTimeoutId(id);
+        }}
+      />
 
       {renderOptions()}
     </>
